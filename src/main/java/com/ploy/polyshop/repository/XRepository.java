@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.ploy.polyshop.repository;
 
-/**
- *
- * @author perdh
- */
-public interface XRepository {
+import java.util.List;
+
+public interface XRepository<EntityType,Type> {
+    
+    void insert(EntityType entity);
+
+    void update(EntityType entity);
+
+    void delete(Type id);
+
+    EntityType selectById(Type id);
+
+    List<EntityType> selectAll();
+
+    List<EntityType> selectBySQL(String sql, Object... args);  
     
 }
