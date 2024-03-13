@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class DatBaseConnect {
     public static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=PolyDT;encrypt=true;trustServerCertificate=true";
-    public static String username = "root";
+    public static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=PolyDT_City;encrypt=true;trustServerCertificate=true";
+    public static String username = "sa";
     public static String password = "root";
 
     static {
