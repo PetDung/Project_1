@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.ploy.polyshop.view.component;
 
 import com.ploy.polyshop.model.Customer;
@@ -37,7 +33,7 @@ public class TableCustomerPanel extends javax.swing.JPanel {
         this.fatherFrame = customerFrame;
         this.state = state;
         this.setBackground(Color.WHITE);
-        jTable1.setRowHeight(50);
+        jTable1.setRowHeight(40);
         loadTable();
     }
     
@@ -47,7 +43,7 @@ public class TableCustomerPanel extends javax.swing.JPanel {
         this.state = state;
         this.inputSearch = inputSearch;
         this.setBackground(Color.WHITE);
-        jTable1.setRowHeight(50);
+        jTable1.setRowHeight(40);
         loadTable();
     }
     
