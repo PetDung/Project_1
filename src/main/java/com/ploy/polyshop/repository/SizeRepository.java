@@ -9,13 +9,36 @@ import java.util.List;
 
 public class SizeRepository implements XRepository<Size, Integer>{
     String SQL_SELECT_BY_ID = "SELECT * FROM Size WHERE size_id = ?";
+    String SQL_SELECT_ALL = "SELECT * FROM Size";
+    String SQL_UPDATE = "UPDATE Size SET size_name = ?, description = ?, is_active = ?, updated_at = ? WHERE size_id = ?";
+    String SQL_INSERT = "INSERT INTO Size (size_name, description, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
+    String SQL_SELECT_BY_NAME = "SELECT * FROM Size WHERE size_name LIKE ?";
 
+
+
+    
+    
     @Override
     public void insert(Size entity) {
+        DatBaseConnect.executeUpdate(SQL_INSERT,
+                entity.getSizeName(),
+                entity.getDescription(),
+                entity.isIsActive(),
+                entity.getCreatedAt(),
+                entity.getUpdatedAt()
+        );
     }
 
     @Override
     public void update(Size entity) {
+        
+        DatBaseConnect.executeUpdate(SQL_UPDATE,
+                entity.getSizeName(),
+                entity.getDescription(),
+                entity.isIsActive(),
+                entity.getUpdatedAt(),
+                entity.getSizeId()
+        );
     }
 
     @Override
@@ -31,7 +54,11 @@ public class SizeRepository implements XRepository<Size, Integer>{
 
     @Override
     public List<Size> selectAll() {
-        return null;
+        return selectBySQL(SQL_SELECT_ALL);
+    }
+    
+    public  List<Size> findByName(String name){
+        return selectBySQL(SQL_SELECT_BY_NAME, "%" + name + "%");
     }
 
     @Override

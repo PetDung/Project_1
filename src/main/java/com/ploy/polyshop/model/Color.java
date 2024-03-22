@@ -3,14 +3,14 @@ package com.ploy.polyshop.model;
 import java.sql.Date;
 
 public class Color {
-    private int colorId;
+    private Integer colorId;
     private String colorName;
     private String description;
-    private boolean isActive;
+    private Boolean isActive;
     private Date createdAt;
     private Date updatedAt;
 
-    public Color(int colorId, String colorName, String description, boolean isActive, Date createdAt, Date updatedAt) {
+    public Color(int colorId, String colorName, String description, Boolean isActive, Date createdAt, Date updatedAt) {
         this.colorId = colorId;
         this.colorName = colorName;
         this.description = description;
@@ -24,11 +24,11 @@ public class Color {
     
     
     
-    public int getColorId() {
+    public Integer getColorId() {
         return colorId;
     }
 
-    public void setColorId(int colorId) {
+    public void setColorId(Integer colorId) {
         this.colorId = colorId;
     }
 
@@ -48,11 +48,11 @@ public class Color {
         this.description = description;
     }
 
-    public boolean isIsActive() {
+    public Boolean isIsActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean isActive) {
+    public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
 

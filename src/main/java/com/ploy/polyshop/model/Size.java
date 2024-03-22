@@ -4,14 +4,14 @@ package com.ploy.polyshop.model;
 import java.sql.Date;
 
 public class Size {
-    private int sizeId;
+    private Integer sizeId;
     private String sizeName;
     private String description;
-    private boolean isActive;
+    private Boolean isActive;
     private Date createdAt;
     private Date updatedAt;
 
-    public Size(int sizeId, String sizeName, String description, boolean isActive, Date createdAt, Date updatedAt) {
+    public Size(int sizeId, String sizeName, String description, Boolean isActive, Date createdAt, Date updatedAt) {
         this.sizeId = sizeId;
         this.sizeName = sizeName;
         this.description = description;
@@ -24,11 +24,11 @@ public class Size {
     }
     
 
-    public int getSizeId() {
+    public Integer getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(int sizeId) {
+    public void setSizeId(Integer sizeId) {
         this.sizeId = sizeId;
     }
 
@@ -48,11 +48,11 @@ public class Size {
         this.description = description;
     }
 
-    public boolean isIsActive() {
+    public Boolean isIsActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean isActive) {
+    public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
 

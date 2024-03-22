@@ -49,7 +49,7 @@ create table Voucher(
 
 create table Color(
 	color_id int PRIMARY KEY IDENTITY(1,1),
-	color_name NVARCHAR(100) NOT NULL,
+	color_name NVARCHAR(100) UNIQUE NOT NULL,
 	description NVARCHAR(100) NOT NULL,
 	is_active BIT NOT NULL DEFAULT 1,
 	created_at Date NOT NULL ,
@@ -58,7 +58,7 @@ create table Color(
 
 create table Size(
 	size_id int PRIMARY KEY IDENTITY(1,1),
-	size_name NVARCHAR(100) NOT NULL,
+	size_name NVARCHAR(100) UNIQUE NOT NULL,
 	description NVARCHAR(100) NOT NULL,
 	is_active BIT NOT NULL DEFAULT 1,
 	created_at Date NOT NULL ,
@@ -67,7 +67,7 @@ create table Size(
 
 create table Material(
 	material_id int PRIMARY KEY IDENTITY(1,1),
-	material_name NVARCHAR(100) NOT NULL,
+	material_name NVARCHAR(100) UNIQUE NOT NULL,
 	description NVARCHAR(100) NOT NULL,
 	is_active BIT NOT NULL DEFAULT 1,
 	created_at Date NOT NULL ,
@@ -77,7 +77,7 @@ create table Material(
 
 create table ProductStatus(
 	status_id int PRIMARY KEY IDENTITY(1,1),
-	status_name NVARCHAR(100) NOT NULL,
+	status_name NVARCHAR(100) UNIQUE NOT NULL,
 	description NVARCHAR(100) NOT NULL,
 	is_active BIT NOT NULL DEFAULT 1,
 	created_at Date NOT NULL ,
@@ -92,7 +92,7 @@ create table Product(
 	product_name NVARCHAR(50) UNIQUE NOT NULL,
 	created_at Date NOT NULL ,
   	updated_at Date NOT NULL,
-	url_image NVARCHAR(100) NOT NULL,
+	url_image NVARCHAR(100),
 	description NVARCHAR(100) NOT NULL,
 	FOREIGN KEY (material_id) REFERENCES Material (material_id), 
 	FOREIGN KEY (status_id) REFERENCES ProductStatus (status_id)
@@ -118,14 +118,15 @@ create table ProductDetails(
 	status_id int,
 	price DECIMAL(10,2) NOT NULL,
 	quantity NVARCHAR(100) NOT NULL,
-	url_image NVARCHAR(100) NOT NULL,
+	url_image NVARCHAR(100),
 	created_at Date NOT NULL ,
   	updated_at Date NOT NULL,
 	FOREIGN KEY (color_id) REFERENCES Color (color_id),
 	FOREIGN KEY (size_id) REFERENCES Size (size_id),
 	FOREIGN KEY (product_id) REFERENCES Product (product_id),
 	FOREIGN KEY (discount_id) REFERENCES Discount (discount_id),
-	FOREIGN KEY (status_id) REFERENCES ProductStatus (status_id)
+	FOREIGN KEY (status_id) REFERENCES ProductStatus (status_id),
+	UNIQUE (color_id, size_id, product_id)
 );
 
 create table Customer(
@@ -239,17 +240,17 @@ VALUES
 
 INSERT INTO Color (color_name, description, is_active, created_at, updated_at)
 VALUES
-('Red', 'Red color', 1, '2022-01-01', '2022-01-01'),
-('Blue', 'Blue color', 1, '2022-01-02', '2022-01-02'),
-('Green', 'Green color', 1, '2022-01-03', '2022-01-03'),
-('Yellow', 'Yellow color', 1, '2022-01-04', '2022-01-04'),
-('Black', 'Black color', 1, '2022-01-05', '2022-01-05');
+(N'??', 'color', 1, '2022-01-01', '2022-01-01'),
+(N'Xanh', 'color', 1, '2022-01-02', '2022-01-02'),
+(N'Vàng', 'color', 1, '2022-01-03', '2022-01-03'),
+(N'?en', 'color', 1, '2022-01-04', '2022-01-04'),
+(N'H?ng', 'color', 1, '2022-01-05', '2022-01-05');
 
 INSERT INTO Size (size_name, description, is_active, created_at, updated_at)
 VALUES
-('Small', 'Small size', 1, '2022-01-01', '2022-01-01'),
-('Medium', 'Medium size', 1, '2022-01-02', '2022-01-02'),
-('Large', 'Large size', 1, '2022-01-03', '2022-01-03'),
+('S', 'Small size', 1, '2022-01-01', '2022-01-01'),
+('M', 'Medium size', 1, '2022-01-02', '2022-01-02'),
+('L', 'Large size', 1, '2022-01-03', '2022-01-03'),
 ('XL', 'XL size', 1, '2022-01-04', '2022-01-04'),
 ('XXL', 'XXL size', 1, '2022-01-05', '2022-01-05');
 
@@ -263,11 +264,11 @@ VALUES
 
 INSERT INTO ProductStatus (status_name, description, is_active, created_at, updated_at)
 VALUES
-('Available', 'Product is available', 1, '2022-01-01', '2022-01-01'),
-('Out of Stock', 'Product is out of stock', 1, '2022-01-02', '2022-01-02'),
-('Discontinued', 'Product is discontinued', 1, '2022-01-03', '2022-01-03'),
-('Coming Soon', 'Product is coming soon', 1, '2022-01-04', '2022-01-04'),
-('Limited Edition', 'Product is limited edition', 1, '2022-01-05', '2022-01-05');
+(N'Ng?ng bán', 'Product is available', 1, '2022-01-01', '2022-01-01'),
+(N'H?t Hàng', 'Product is out of stock', 1, '2022-01-02', '2022-01-02'),
+(N'Còn Hàng', 'Product is discontinued', 1, '2022-01-03', '2022-01-03'),
+(N'S?p Ra M?t', 'Product is coming soon', 1, '2022-01-04', '2022-01-04'),
+('Limited', 'Product is limited edition', 1, '2022-01-05', '2022-01-05');
 
 INSERT INTO Product ( material_id, status_id, product_name, created_at, updated_at, url_image, description)
 VALUES
@@ -289,7 +290,12 @@ VALUES
 ( 2, 2, 2, 2, 2, 59.99, '20', 'image2.jpg', '2022-01-02', '2022-01-02'),
 ( 3, 3, 3, 3, 3, 69.99, '30', 'image3.jpg', '2022-01-03', '2022-01-03'),
 ( 4, 4, 4, null, 4, 79.99, '40', 'image4.jpg', '2022-01-04', '2022-01-04'),
-( 5, 5, 5, null, 5, 89.99, '50', 'image5.jpg', '2022-01-05', '2022-01-05');
+( 5, 5, 5, null, 5, 89.99, '50', 'image5.jpg', '2022-01-05', '2022-01-05'),
+( 2, 3, 1, null, 5, 89.99, '50', 'image5.jpg', '2022-01-05', '2022-01-05');
+
+INSERT INTO ProductDetails ( color_id, size_id, product_id, discount_id, status_id, price, quantity, url_image, created_at, updated_at)
+VALUES
+( 2, 3, 1, null, 5, 89.99, '50', 'image5.jpg', '2022-01-05', '2022-01-05');
 
 
 SET IDENTITY_INSERT Customer OFF;
@@ -334,5 +340,4 @@ VALUES
 ( 5, 5, null, 89.99, 4, 0.15, 359.96, 271.97, 1, '2022-01-05', '2022-01-05');
 
 SELECT * FROM sys.dm_exec_sessions WHERE database_id = DB_ID('PolyDT_City');
-KILL 76;
-KILL 55;
+KILL 56;

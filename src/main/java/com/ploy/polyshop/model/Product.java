@@ -4,7 +4,7 @@ package com.ploy.polyshop.model;
 import java.sql.Date;
 
 public class Product {
-    private int productId;
+    private Integer productId;
     private Material material;
     private ProductStatus status;
     private String productName;
@@ -27,7 +27,7 @@ public class Product {
     public Product() {
     }
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 

@@ -5,19 +5,11 @@ import com.ploy.polyshop.repository.CustomerRepository;
 import com.ploy.polyshop.uint.EnumStateLoad;
 import static com.ploy.polyshop.uint.EnumStateLoad.ACTIVE;
 import static com.ploy.polyshop.uint.EnumStateLoad.ALL;
-import com.ploy.polyshop.view.CustomerFrame;
 import com.ploy.polyshop.view.Panel.CustomerPanel;
 import java.awt.Color;
-import java.awt.Component;
-import java.util.EventObject;
 import java.util.List;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
 
 public class TableCustomerPanel extends javax.swing.JPanel {

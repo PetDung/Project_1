@@ -3,21 +3,21 @@ package com.ploy.polyshop.model;
 import java.sql.Date;
 
 public class ProductDetail {
-    private int productDetailsId;
+    private Integer productDetailsId;
     private Color color;
     private Size size;
     private Product product;
     private int discountId;
-    private int status;
-    private double price;
-    private String quantity;
+    private ProductStatus status;
+    private Double price;
+    private Integer quantity;
     private String imageUrl;
     private Date createdAt;
     private Date updatedAt;
 
     // Constructor
    
-    public ProductDetail(int productDetailsId, Color color, Size size, Product product, int discountId, int status, double price, String quantity, String imageUrl, Date createdAt, Date updatedAt) {
+    public ProductDetail(int productDetailsId, Color color, Size size, Product product, int discountId, ProductStatus status, Double price, Integer quantity, String imageUrl, Date createdAt, Date updatedAt) {
         this.productDetailsId = productDetailsId;
         this.color = color;
         this.size = size;
@@ -34,11 +34,11 @@ public class ProductDetail {
     public ProductDetail() {
     }
 
-    public int getProductDetailsId() {
+    public Integer getProductDetailsId() {
         return productDetailsId;
     }
 
-    public void setProductDetailsId(int productDetailsId) {
+    public void setProductDetailsId(Integer productDetailsId) {
         this.productDetailsId = productDetailsId;
     }
 
@@ -55,14 +55,17 @@ public class ProductDetail {
     }
 
     public void setSize(Size size) {
+        
         this.size = size;
     }
 
     public Product getProduct() {
+        
         return product;
     }
 
     public void setProduct(Product product) {
+        System.out.println("Set p:" + product.getProductId());
         this.product = product;
     }
 
@@ -74,27 +77,27 @@ public class ProductDetail {
         this.discountId = discountId;
     }
 
-    public int getStatus() {
+    public ProductStatus getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(ProductStatus status) {
         this.status = status;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

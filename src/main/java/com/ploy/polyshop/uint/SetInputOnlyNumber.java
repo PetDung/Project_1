@@ -43,4 +43,18 @@ public class SetInputOnlyNumber {
             }
         });
     }
+    public static  void setFormatPrice(JTextField tf){
+        ((AbstractDocument) tf.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+
+                if (newText.matches("\\d*\\.?\\d{0,5}")) {
+                    super.replace(fb, offset, length, text, attrs);
+                } else {
+                    Toolkit.getDefaultToolkit().beep(); // Phát ra tiếng "beep" khi có ký tự không hợp lệ
+                }
+            }
+        });
+    }
 }

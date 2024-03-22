@@ -96,7 +96,7 @@ public class CustomerPanel extends javax.swing.JPanel {
             .addGap(0, 496, Short.MAX_VALUE)
         );
 
-        tabPanelCustomer.addTab("Hoạt động", jPanel3);
+        tabPanelCustomer.addTab("Không hoạt động", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -109,7 +109,7 @@ public class CustomerPanel extends javax.swing.JPanel {
             .addGap(0, 496, Short.MAX_VALUE)
         );
 
-        tabPanelCustomer.addTab("Đã khóa", jPanel2);
+        tabPanelCustomer.addTab("Đang hoạt động", jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 102));
 

@@ -1,6 +1,5 @@
 package com.ploy.polyshop.view.component;
 
-import com.ploy.polyshop.view.component.TableCustomerPanel;
 import com.ploy.polyshop.model.Customer;
 import com.ploy.polyshop.repository.CustomerRepository;
 import com.ploy.polyshop.uint.SetInputOnlyNumber;
@@ -14,10 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
 
 public class InfoCustomerFrame extends javax.swing.JFrame {
 

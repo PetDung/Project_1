@@ -1,23 +1,23 @@
 package com.ploy.polyshop.repository;
 
-import com.ploy.polyshop.model.Material;
+import com.ploy.polyshop.model.ProductStatus;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaterialRepository  implements XRepository<Material, Integer>{
+public class ProductStatusRepository implements XRepository<ProductStatus, Integer>{
     
-    String SQL_SELECT_BY_ID = "SELECT * FROM Material WHERE material_id = ?";
-    String SQL_SELECT_ALL = "SELECT * FROM Material";
+    String SQL_SELECT_ALL ="SELECT * FROM ProductStatus";
+    String SQL_SELECT_BY_ID ="SELECT * FROM ProductStatus WHERE status_id = ?";
     
     
     @Override
-    public void insert(Material entity) {
+    public void insert(ProductStatus entity) {
     }
 
     @Override
-    public void update(Material entity) {
+    public void update(ProductStatus entity) {
     }
 
     @Override
@@ -25,28 +25,28 @@ public class MaterialRepository  implements XRepository<Material, Integer>{
     }
 
     @Override
-    public Material selectById(Integer id) {
-        List<Material> list = selectBySQL(SQL_SELECT_BY_ID, id);
+    public ProductStatus selectById(Integer id) {
+       List<ProductStatus> list = selectBySQL(SQL_SELECT_BY_ID, id);
                 
-        return list.size()>0 ? list.get(0) : null; 
+      return list.size()>0 ? list.get(0) : null; 
     }
 
     @Override
-    public List<Material> selectAll() {
+    public List<ProductStatus> selectAll() {
         return selectBySQL(SQL_SELECT_ALL);
     }
 
     @Override
-    public List<Material> selectBySQL(String sql, Object... args) {
+    public List<ProductStatus> selectBySQL(String sql, Object... args) {
+        List<ProductStatus> list = new ArrayList<>();
         
-        List<Material> list = new ArrayList<>();
         try {
             ResultSet rs = DatBaseConnect.executeQuery(sql, args);
             while (rs.next()) {
-                Material entity = new Material();
+                ProductStatus entity = new ProductStatus();
 
-                entity.setMaterialId(rs.getInt("material_id"));
-                entity.setMaterialName(rs.getString("material_name"));
+                entity.setStatusId(rs.getInt("status_id"));
+                entity.setStatusName(rs.getString("status_name"));
                 entity.setDescription(rs.getString("description"));
                 entity.setUpdatedAt(rs.getDate("updated_at"));
                 entity.setCreatedAt(rs.getDate("created_at"));
@@ -54,9 +54,11 @@ public class MaterialRepository  implements XRepository<Material, Integer>{
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
+            
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        
         return list;
     }
     

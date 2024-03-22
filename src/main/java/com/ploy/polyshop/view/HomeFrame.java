@@ -8,6 +8,14 @@ public class HomeFrame extends javax.swing.JFrame {
     
     public HomeFrame() {
         initComponents();
+        int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        
+        // Tính toán vị trí để căn giữa
+        int x = (screenWidth - this.getWidth()) / 2;
+        // Đặt vị trí của frame
+        setLocation(x, 0);
+        
         setContentPane(homePanel);
         pack();
         revalidate();
